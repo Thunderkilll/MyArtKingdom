@@ -2,11 +2,20 @@ package com.vagrok.myartkingdom
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
+
+    val TAG = "MainActivity"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //main module 1
+
+        GlobalScope.launch {
+            Log.d(TAG , "this is couroutine opened a new thread : ${Thread.currentThread().name}")
+        }
     }
 }
