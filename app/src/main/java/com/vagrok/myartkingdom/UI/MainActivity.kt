@@ -1,8 +1,10 @@
-package com.vagrok.myartkingdom
+package com.vagrok.myartkingdom.UI
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.vagrok.myartkingdom.ArtAdapter
+import com.vagrok.myartkingdom.R
 import kotlinx.coroutines.*
 
 class MainActivity : AppCompatActivity() {
