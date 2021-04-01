@@ -3,10 +3,8 @@ package com.vagrok.myartkingdom
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import kotlinx.coroutines.Delay
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import android.widget.TextView
+import kotlinx.coroutines.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,22 +14,44 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val tvDispatcher : TextView = findViewById<TextView>(R.id.tvDispatcher)
 
-        //Coroutines
-        GlobalScope.launch {
-            Log.d(TAG , "this  coroutine opened a new thread : ${Thread.currentThread().name}")
-            delay(1000L)
-            Log.d(TAG , "After 3 seconds delay this coroutine is back from sleep mode")
+        //Coroutines : main thread for UI
+        GlobalScope.launch(Dispatchers.Main) {
+            Log.d(TAG , "this  coroutine opened a new thread : ${Thread.currentThread().name}    \n for UI usage")
+
         }
-        Log.d(TAG , "another thread opened by the name : ${Thread.currentThread().name}")
+        //Coroutines IO for networking and data operation
+        GlobalScope.launch(Dispatchers.IO) {
+            Log.d(TAG , "this  coroutine opened a new thread : ${Thread.currentThread().name} \nFor Networking and data operation")
+            val answer = doNetworkCall()
+            //switch context to main thread
+            withContext(Dispatchers.Main){
+                tvDispatcher.text = answer
+            }
+        }
+
+
     }
 
 
+/*
+  //Coroutines : Default to populate lists big calculations
+        GlobalScope.launch(Dispatchers.Default) {
+            Log.d(TAG , "this  coroutine opened a new thread : ${Thread.currentThread().name} \n for calculations")
 
+
+
+        }
+        //Coroutines
+        GlobalScope.launch(newSingleThreadContext("Testing thread")) {
+            Log.d(TAG , "this  coroutine opened a new thread : ${Thread.currentThread().name}")
+
+        }*/
     //suspension function for coroutines
 
     suspend fun doNetworkCall():String {
         delay(1000L)
-        return "thread has been delayed by 1 second"
+        return "Main thread has been delayed by 1 second"
     }
 }
