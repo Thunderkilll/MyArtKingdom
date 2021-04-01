@@ -1,6 +1,9 @@
 # MyArtKingdom
 testing read me file to add more content here
+
 using MVVM (Model -> View -> View -> Model)
+Build gradel depd:
+
 
  // Architectural Components
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
