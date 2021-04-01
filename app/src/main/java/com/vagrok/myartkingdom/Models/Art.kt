@@ -1,4 +1,4 @@
-package com.vagrok.myartkingdom
+package com.vagrok.myartkingdom.Models
 
 data class Art(
     val description: String,
