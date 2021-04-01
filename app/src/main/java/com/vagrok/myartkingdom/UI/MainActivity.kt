@@ -2,6 +2,8 @@ package com.vagrok.myartkingdom.UI
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.InflateException
 import android.view.Menu
 import android.view.MenuInflater
 import androidx.navigation.findNavController
@@ -19,17 +21,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_main)
-        bottomNavigationView.setupWithNavController(newsNavHostFragment.findNavController())
+            setContentView(R.layout.activity_main)
+            bottomNavigationView.setupWithNavController(newsNavHostFragment.findNavController())
+
 
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        val inflater: MenuInflater = menuInflater
-        inflater.inflate(R.menu.navigation_menu, menu)
-        return true
-    }
 
 /*
        //Coroutines : main thread for UI

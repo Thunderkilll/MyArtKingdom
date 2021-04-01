@@ -10,6 +10,6 @@
 
     <item android:id="@+id/searchNewsFragment"
         android:title="@string/search_news"
-        android:icon="@drawable/ic_all_news"
+
         />
 </menu>
