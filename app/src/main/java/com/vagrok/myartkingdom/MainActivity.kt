@@ -9,7 +9,7 @@ import kotlinx.coroutines.*
 class MainActivity : AppCompatActivity() {
 
     val TAG = "MainActivity"
-
+    private lateinit var artAdapter: ArtAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -18,11 +18,13 @@ class MainActivity : AppCompatActivity() {
 
         //Coroutines : main thread for UI
         GlobalScope.launch(Dispatchers.Main) {
-            Log.d(TAG , "this  coroutine opened a new thread : ${Thread.currentThread().name}    \n for UI usage")
+            val tvDispatcher : TextView = findViewById<TextView>(R.id.tvDispatcher)
+          //  artAdapter = ArtAdapter(MutableList())
 
         }
         //Coroutines IO for networking and data operation
         GlobalScope.launch(Dispatchers.IO) {
+
             Log.d(TAG , "this  coroutine opened a new thread : ${Thread.currentThread().name} \nFor Networking and data operation")
             val answer = doNetworkCall()
             //switch context to main thread
@@ -32,7 +34,13 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+        runBlocking {
+            Log.d(TAG , "Before run blocking ")
+        }
+
+
     }
+
 
 
 /*
