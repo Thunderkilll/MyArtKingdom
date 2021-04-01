@@ -2,32 +2,42 @@ package com.vagrok.myartkingdom.UI
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.vagrok.myartkingdom.ArtAdapter
 import com.vagrok.myartkingdom.R
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.*
 
 class MainActivity : AppCompatActivity() {
 
-    val TAG = "MainActivity"
+
     private lateinit var artAdapter: ArtAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
+        bottomNavigationView.setupWithNavController(newsNavHostFragment.findNavController())
 
 
+    }
 
-        //Coroutines : main thread for UI
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.navigation_menu, menu)
+        return true
+    }
+
+/*
+       //Coroutines : main thread for UI
         GlobalScope.launch(Dispatchers.Main) {
-
-
 
         }
         //Coroutines IO for networking and data operation
         GlobalScope.launch(Dispatchers.IO) {
-
-            Log.d(TAG , "this  coroutine opened a new thread : ${Thread.currentThread().name} \nFor Networking and data operation")
-            val answer = doNetworkCall()
 
             withContext(Dispatchers.Main){
 
@@ -36,15 +46,9 @@ class MainActivity : AppCompatActivity() {
 
 
         runBlocking {
-            Log.d(TAG , "Before run blocking ")
+
         }
 
-
-    }
-
-
-
-/*
   //Coroutines : Default to populate lists big calculations
         GlobalScope.launch(Dispatchers.Default) {
             Log.d(TAG , "this  coroutine opened a new thread : ${Thread.currentThread().name} \n for calculations")
