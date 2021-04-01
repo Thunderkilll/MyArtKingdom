@@ -3,7 +3,6 @@ package com.vagrok.myartkingdom
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.TextView
 import kotlinx.coroutines.*
 
 class MainActivity : AppCompatActivity() {
@@ -14,12 +13,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val tvDispatcher : TextView = findViewById<TextView>(R.id.tvDispatcher)
+
 
         //Coroutines : main thread for UI
         GlobalScope.launch(Dispatchers.Main) {
-            val tvDispatcher : TextView = findViewById<TextView>(R.id.tvDispatcher)
-          //  artAdapter = ArtAdapter(MutableList())
+
+
 
         }
         //Coroutines IO for networking and data operation
@@ -27,9 +26,9 @@ class MainActivity : AppCompatActivity() {
 
             Log.d(TAG , "this  coroutine opened a new thread : ${Thread.currentThread().name} \nFor Networking and data operation")
             val answer = doNetworkCall()
-            //switch context to main thread
+
             withContext(Dispatchers.Main){
-                tvDispatcher.text = answer
+
             }
         }
 
