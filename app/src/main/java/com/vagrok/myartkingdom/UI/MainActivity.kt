@@ -2,14 +2,9 @@ package com.vagrok.myartkingdom.UI
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.InflateException
-import android.view.Menu
-import android.view.MenuInflater
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.vagrok.myartkingdom.ArtAdapter
+import com.vagrok.myartkingdom.adapters.ArtAdapter
 import com.vagrok.myartkingdom.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.*

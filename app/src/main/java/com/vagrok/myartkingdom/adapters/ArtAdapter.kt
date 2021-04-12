@@ -1,4 +1,4 @@
-package com.vagrok.myartkingdom
+package com.vagrok.myartkingdom.adapters
 
 import android.graphics.Paint.STRIKE_THRU_TEXT_FLAG
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.vagrok.myartkingdom.Models.Art
+import com.vagrok.myartkingdom.R
 
 class ArtAdapter (
     private val arts: MutableList<Art>
