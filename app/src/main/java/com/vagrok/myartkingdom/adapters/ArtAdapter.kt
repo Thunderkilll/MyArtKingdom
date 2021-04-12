@@ -52,7 +52,7 @@ class ArtAdapter (
             val tvDescription : TextView = findViewById(R.id.tvDescription)
             val imgArt : ImageView = findViewById(R.id.imgArt)
             tvDescription.text = curArt.description
-             imgArt.setImageDrawable(getResources().getDrawable(R.drawable.img18))
+            imgArt.setImageDrawable(getResources().getDrawable(R.drawable.img18))
 
 
 
