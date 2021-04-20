@@ -13,6 +13,7 @@ import com.vagrok.myartkingdom.Utility.Resource
 import com.vagrok.myartkingdom.adapters.NewsAdapter
 import kotlinx.android.synthetic.main.fragment_breaking_news.*
 
+
 class BreakingNewsFragments : Fragment() {
 
     lateinit var viewModel: NewsViewModel
